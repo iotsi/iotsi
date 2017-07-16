@@ -9,3 +9,4 @@
 6. Thread Group: http://threadgroup.org/news-events/events
 7. W3C: https://www.w3.org/participate/eventscal.html
 8. ZigBee Alliance: http://www.zigbee.org/zigbee-alliance-member-meetings/
+9. Open Mobile Alliance: http://openmobilealliance.org/events/upcoming-industry-events/
