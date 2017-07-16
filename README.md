@@ -1,4 +1,3 @@
-# starthere
+# IOT Semantic Interoperability
 
-### Starting Place to collect information and pointers from the IoT Semantic Interoperability Workshop 
-
+This is the reporitory for the IOTSI and WISHI workshops. 
