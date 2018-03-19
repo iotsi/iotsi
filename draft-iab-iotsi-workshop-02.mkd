@@ -566,7 +566,7 @@ Tschofenig.
 * Marcello Lioy, Qualcomm
 * Kerry Lynn, Verizon
 * Mayan Mathen, Catalina Labs
-* Erik Nordmenk, Arista
+* Erik Nordmark, Arista
 * Jean Paoli, Microsoft
 * Joaquin Prado, OMA
 * Dave Raggett, W3C

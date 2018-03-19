@@ -738,7 +738,7 @@ Internet-Draft          draft-iab-iotsi-workshop              March 2018
 
    o  Mayan Mathen, Catalina Labs
 
-   o  Erik Nordmenk, Arista
+   o  Erik Nordmark, Arista
 
    o  Jean Paoli, Microsoft
 
