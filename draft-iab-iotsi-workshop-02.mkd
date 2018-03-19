@@ -368,8 +368,9 @@ due to the translation between data models seems unavoidable.
 
 TODO: add discussion of the "red star" diagram
 
-TODO: add key point discussed that translation between two standard data models requires specific code,
-it cannot be algorithmically derived based on the two formal descriptions.  It can only be
+The participants agreed that translation between the values in two standard data models typically
+cannot be algorithmically derived based on the two formal descriptions, but instead
+requires custom code.  Runtime translation of values can only be
 algorithmically done when the actual data model on one side is actually algorithmically derived
 from the one on the other side.  This is called a "derived model".
 
