@@ -70,17 +70,23 @@ informative:
     title: OMA LWM2M XML Schema
     author:
     - org: OMA
-    date: 2016
+    date: 2018
   OMA-Editor:
     title: OMA LWM2M Object and Resource Editor
     author:
     - org: OMA
-    date: 2016
+    date: 2018
   OMNA:
     title: OMNA Lightweight M2M (LWM2M) Object & Resource Registry
     author:
     - org: OMA
-    date: 2016
+    date: 2018
+  SIG:
+    target: https://www.bluetooth.com/specifications/gatt
+    title: GATT Specifications
+    author:
+    - org: Bluetooth SIG
+    date: 2018
   PYANG:
     title: An extensible YANG validator and converter in python
     author:
@@ -146,22 +152,21 @@ complementary to the ongoing engineering efforts performed by working
 groups of the IETF.
 
 With the expansion of the Internet of Things (IoT), interoperability
-becomes more and more important. Standards-developing organizations
-have done a tremendous amount of work to standardize protocols to
-simplify implementation and to lower the cost of IoT products. As a
-result, new protocols were developed, existing protocols were combined
-in new ways, and lightweight profiles were defined.
+becomes more and more important. Standards developing organizations
+have done a tremendous amount of work to standardize new protocols,
+and to profile existing protocols.
 
-At the application layer, interoperability is not yet mature; the
+At the application layer and at the level of solution frameworks, 
+interoperability is not yet mature. Particularly, the
 work on data formats (in the form of data models and information
-models) has not seen the same level of consistency throughout various
+models) has not seen the same level of consistency throughout
 standardization groups.
 
 One common problem is the lack of an encoding-independent standardization
 of the information, the so-called information model. Another problem is
 the strong relationship with the underlying communication architecture,
-such as an RPC or a RESTful design. Furthermore, different groups develop
-similar concepts that only differ slightly, leading to interoperability
+such as an Remote Procedure Call (RPC) or a RESTful design. Furthermore, groups develop
+solutions that are very similar on the surface but differ slightly in their standardized outcome, leading to interoperability
 problems. Finally, some groups favor different encodings for use with
 various application layer protocols.
 
@@ -195,7 +200,7 @@ interested to learn about the following aspects:
 
 # Terminology {#section-2}
 
-The first roadblock to semantic interoperability is the lack of a
+The first roadblock to interoperability at the level of data models is the lack of a
 common vocabulary to start the discussion.
 {{RFC3444}} provides a starting point by separating conceptual models for designers,
 or "information models", from concrete detailed definitions for implementers, or
@@ -239,78 +244,28 @@ work will continue within each organization to create various
 terminology documents.  The participants agreed to set up a github repository
 {{IOTSIGIT}} for sharing information.
 
-# Architecture {#section-3}
-
-Various architectures follow different design patterns. Some are REST-
-oriented with a limited set of standard methods to find and manipulate resources on
-endpoints.  Others are RPC-like, with a rich set of methods that may vary by
-resource type. Still others are more
-Publish/Subscribe-oriented that focus on the flow of information
-based on the topics of the information that is being shared.  
-
-TODO: The 3 items below need to be rewritten, perhaps as normal paragraphs,
-as they're hard to follow and it's unclear what the purpose of the "list" is.
-
-{: hangIndent='3'}
-Thing-hub-cloud
-: Things talk to some type of hub or gateway, which talks back to them and
-  to the cloud.  There is a spectrum of emphasis on the hub vs. the
-  cloud.  For some, the hub is simply an IP router that connects different link
-  layer technologies, but for others it
-  is a critical place for maintaining local control.
-{: vspace='0'}
-
-{: hangIndent='3'}
-Meta Thing
-: Some things are actually a composite of other things, like an alarm composed
-  of a clock, lights, and thermostat.
-{: vspace='0'}
-
-{: hangIndent='3'}
-Nearby things
-: Some things may be geospatially related even if they
-  are not on the same network or within the same administrative
-  domain.
-{: vspace='0'}
-
-Current data models and definitions for "things" often focus on
-defining actual physical devices and representing their state.  That
-focus should perhaps be shifted into a more holistic or user-oriented
-perspective, defining abstract concepts as well.  On the other hand, a lot
-of focus is placed on human interaction with physical devices, while
-IoT may often be more focussed on interaction between "things" instead.
-
-Those things should be designed to be multi-purpose, keeping in
-mind that solutions should be open-ended to facilitate new usages and
-new future domains of operation. This pattern has already happened, where
-devices that were intended for one purpose ended up being used for a
-different one given the right context (e.g., a smart phone LED light
-was used as a heartrate monitor).
-
 # What Problems to Solve {#section-4}
 
 The participants agreed that there is not simply a single problem to be solved, but
-rather a range. At least the following problems were discussed:
+rather a range. During the workshop the following problems were discussed:
 
 * Formal Languages for Documentation Purposes
 
 To simplify review and publication, standardization organizations are in
 need of a more formal description of their information and data models.
-For example, the Open Mobile Alliance (OMA)
+For example, the Open Mobile Alliance (OMA), now OMA SpecWorks,
 used an XML schema {{LWM2M-Schema}} to describe their object
-definitions (i.e., data model) and the actual object definitions are available
-for download as XML instance documents.  These XML
-documents offer an alternative way of describing objects compared to
+and resource definitions, which are available
+for download as XML instance documents.  The XML instance
+documents offer an alternative way of describing objects and resources compared to
 the tabular representation found in the specification itself.  The
 XML files of standardized objects are available for download at
-{{OMNA}}.  Furthermore, a tool is offered to define new objects and
-resources.  The online editor tool can be found at {{OMA-Editor}}.
-
-TODO: It might appear unfair to just call out a single organization above, which
-implies that mechanism is somehow better than the other organizations present
-that have other formal languages, especially when the workshop mentioned
-multiple.  W3C uses RDF, OCF uses JSON+RAML, AllSeen uses XML with a specific XSD, etc.
-Should either use multiple examples, or no examples.
+{{OMNA}}.  Furthermore, an online tool is offered to define new objects and
+resources, which can be found at {{OMA-Editor}}. As another example consider the 
+Generic Attributes (GATT) services and characteristics defined by the Bluetooth SIG for use with 
+Bluetooth Smart/Low Energy. The services and characteristics are also defined as 
+XML instance documents and are shown in a tabular form on the Bluetooth SIG website at 
+{{SIG}}. 
 
 * Formal Languages for Code Generation
 
@@ -346,10 +301,9 @@ TODO: Probably need to list other examples discussed in the workshop as well.
 
 * Runtime Discovery
 
-Allow IoT devices to exchange information, potentially along with the
-data exchange, to discover meta-data about the data and, potentially,
-even a self-describing interaction model.  An example of such an
-approach has been shown with HATEOAS {{HATEOAS}}.
+Runtime discovery allows IoT devices to exchange meta-data about the data, potentially along with the
+data exchanged itself. In some cases the meta-data not only describe data but also the interaction model as well. 
+An example of such an approach has been shown with HATEOAS {{HATEOAS}}.
 
 TODO: Probably need to list other examples discussed in the workshop as well.
 For example, AllJoyn introspection.
@@ -363,42 +317,30 @@ proprietary data models in addition to the already standardized ones. There
 are analogies with gateways back in the 1980s that were used to
 translate between network layer protocols.  Eventually IP took over, providing
 the necessary end-to-end interoperability at the network layer. Unfortunately,
-the introduction of translation gateways that lead to the loss of expressiveness
-due to the translation between data models seems unavoidable.
+the introduction of gateways leads to the loss of expressiveness
+due to the translation between data models.
 
 TODO: add discussion of the "red star" diagram
 
-The participants agreed that translation between the values in two standard data models typically
-cannot be algorithmically derived based on the two formal descriptions, but instead
-requires custom code.  Runtime translation of values can only be
-algorithmically done when the actual data model on one side is actually algorithmically derived
-from the one on the other side.  This is called a "derived model".
+Runtime translation of values in two standard data models can only be
+algorithmically done when the data model on one side is  algorithmically derived
+from the data model on the other side.  This is called a "derived model".
+The participants agreed that algorithm translation will often require custom code. 
 
 Translation can happen in two flavours, namely:
 
-a)  Translating formal descriptions between data models: a translation between data model
+a)  Translating data models at design time: a translation between data model
 descriptions, such as translating a YANG model to a RAML/JSON model,
-can be performed once such as during design time.
+can be performed once, such as during design time.
 A single information model can be mapped to a number of different data models.
-b)  Translating data between data models: this flavour implies doing translation at
-runtime.
+
+b)  Translating data between data models at runtime.
 
 TODO: more info was summarized on the slides and in the notes about three types of
 runtime interactions discussed in the papers (and at the workshop):
 
-In one sense, these distinctions affect when the relevant translation is
-performed.  It can be done at "design time" when the information
-model is done, or it can be done at runtime for a concrete data model
-and it can be done depending on the actual serialization.
-
-Yet another distinction will appear depending on the requirements
-from the application protocols. RPC-style ones might require a
-slightly different data model than RESTful ones for similar operations. For
-example, SNMP-traps could be similar to CoAP-Observations but not
-quite the same.  It is easier to translate between systems that
-follow the same architecture/design pattern than across
-architectures, and sometimes a full translation might not even be possible (e.g.,
-stateless vs stateful systems).
+Participants were under the impression that it is easier to translate data between systems that
+follow the same communication architecture.
 
 # Dealing with change {#section-6}
 
@@ -408,10 +350,9 @@ groups have defined data formats for data representation.
 Interactions between devices and services and how their relationship
 evolves over time is more related to their respective interaction models.
 
-The workshop discussed various approaches to dealing with change.  In the most primitive case, a
+The workshop discussed various approaches to deal with change.  In the most basic case, a
 developer might use a description of an API and implement whichever
-are the protocol steps.  In some cases the information model itself
-can be used to generate some of the code stubs.  Subsequent changes to an API
+are the protocol steps.  Sometimes the data or information model can be used to generate code stubs.  Subsequent changes to an API
 require changes on the clients to upgrade to the new version, which
 requires some development of new code to satisfy the needs of the new
 API.
@@ -422,8 +363,7 @@ In that scenario, a machine client could discover the possible interactions with
 service, adapting to changes as they occur without specific code
 being developed to adapt to them.
 
-The challenge seems to be to define the human-readable parts as
-machine-readable.  Machine-readable languages require a shared vocabulary to
+The challenge seems to be to code the human-readable specification into a machine-readable format.  Machine-readable languages require a shared vocabulary to
 give meaning to the tags.
 
 These types of interactions are often based on the REST architectural
@@ -435,7 +375,7 @@ By defining IoT-specific relation types, it is possible to drive
 interactions through links instead of hardcoding URIs into the
 client, thus making the system flexible enough for later changes.
 The definition of the basic hypermedia formats for IoT is still work
-in progress, however some of the existing mechanisms can be reused,
+in progress. However, some of the existing mechanisms can be reused,
 such as resource discovery, forms, or links.
 
 # Security Considerations {#section-7}
@@ -445,7 +385,7 @@ models for security configuration, and security of data and data models in gener
 
 It was observed that the security assumptions and configuration, or "security model", varies by ecosystem today,
 making the job of a translator difficult.  For example, the types of security
-principals (e.g., user vs. device vs. application), the use of ACLs vs. capabilities,
+principals (e.g., user vs. device vs. application), the use of access control lists (ACLs) vs. capabilities,
 and what types of policies can be expressed, all vary by ecosystem.  As a result,
 the security model architecture generally dictates where translation can be done.
 
@@ -466,7 +406,7 @@ learn security requirements might help provide better UIs and translators.
 The participants discussed how best to share information among their various organizations.
 One discussion was around having joint meetings. One current challenge reported was that
 organizations were not aware of when and where each others' meetings were scheduled,
-and sharing such information could help organizations better colocate meetings.
+and sharing such information could help organizations better collocate meetings.
 To facilitate this exchange, the participants agreed to add links to their respective
 meeting schedules from a common page in the IOTSI repository {{IOTSIGIT}}.
 
@@ -474,9 +414,9 @@ Another challenge reported was that organizations did not know how to find each 
 published data models, and sharing such information could better facilitate reuse of the
 same information model.  To facilitate this exchange, this participants discussed whether
 a common repository might be used by multiple organizations.  The OCF's OneIoTa repository
-was discussed as one possibility but it was reported that its Terms of Use at the time
-of the workship prevented this.  The OCF agreed to take this back and look at updating
-the Terms of Use to allow other organizations to use it too, as the restriction was not
+was discussed as one possibility but it was reported that its terms of use at the time
+of the workshop prevented this.  The OCF agreed to take this back and look at updating
+the terms of use to allow other organizations to use it too, as the restriction was not
 the intent.  Schema.org was discussed as another possibility.  In the meantime, the
 participants agreed to add links to their respective repositories from a common page in
 the IOTSI repository {{IOTSIGIT}}.
