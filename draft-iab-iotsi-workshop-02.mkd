@@ -297,7 +297,8 @@ Gateways and other similar devices need to dynamically
 translate (or map) one data model to another one.  An example of this
 idea can be found in {{UDI}}.
 
-TODO: Probably need to list other examples discussed in the workshop as well.
+TODO (Jaime): Probably need to list other examples discussed in the workshop 
+as well.
 
 * Runtime Discovery
 
@@ -305,7 +306,7 @@ Runtime discovery allows IoT devices to exchange meta-data about the data, poten
 data exchanged itself. In some cases the meta-data not only describe data but also the interaction model as well. 
 An example of such an approach has been shown with HATEOAS {{HATEOAS}}.
 
-TODO: Probably need to list other examples discussed in the workshop as well.
+TODO (Dave): Probably need to list other examples discussed in the workshop as well.
 For example, AllJoyn introspection.
 
 # Translation {#section-5}
@@ -320,7 +321,7 @@ the necessary end-to-end interoperability at the network layer. Unfortunately,
 the introduction of gateways leads to the loss of expressiveness
 due to the translation between data models.
 
-TODO: add discussion of the "red star" diagram
+TODO (Hannes): add discussion of the "red star" diagram
 
 Runtime translation of values in two standard data models can only be
 algorithmically done when the data model on one side is  algorithmically derived
@@ -336,7 +337,7 @@ A single information model can be mapped to a number of different data models.
 
 b)  Translating data between data models at runtime.
 
-TODO: more info was summarized on the slides and in the notes about three types of
+TODO (Dave): more info was summarized on the slides and in the notes about three types of
 runtime interactions discussed in the papers (and at the workshop):
 
 Participants were under the impression that it is easier to translate data between systems that
