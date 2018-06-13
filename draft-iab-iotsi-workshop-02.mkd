@@ -38,6 +38,7 @@ informative:
       org: ''
     date: 2016
   HATEOAS:
+    target: https://www.iab.org/wp-content/IAB-uploads/2016/03/2016-IAB-HATEOAS.pdf
     title: Semantic Interoperability Requires Self-describing Interaction Models
       - HATEOAS for the Internet of Things
     author:
@@ -47,6 +48,22 @@ informative:
     date: 2016
     seriesinfo:
       Proceedings: of the IoT Semantic Interoperability Workshop 2016
+  AllSeen:
+    target: https://www.iab.org/wp-content/IAB-uploads/2016/03/AllSeen-summary-IOTSI.pdf
+    title: Summary of AllSeen Alliance Work Relevant to Semantic Interoperability
+    author:
+    - ins: D. Thaler
+      name: D. Thaler
+      org: ''
+    date: 2016
+  BridgeTaxonomy:
+    target: https://www.iab.org/wp-content/IAB-uploads/2016/03/DThaler-IOTSI.pdf
+    title: IoT Bridge Taxonomy
+    author:
+    - ins: D. Thaler
+      name: D. Thaler
+      org: ''
+    date: 2016
   IOTSIAG:
     target: https://www.iab.org/activities/workshops/iotsi/agenda/
     title: IoT Workshop for Semantic Interoperability (IOTSI) - Agenda and Slides
@@ -95,6 +112,7 @@ informative:
       org: ''
     date: 2016
   UDI:
+    target: https://www.iab.org/wp-content/IAB-uploads/2016/03/UDI-Position-Paper-OO-Approach-to-IoT-Interoperability.pdf
     title: Object Oriented Approach to IoT Interoperability
     author:
     - ins: M. Kohanim
@@ -305,9 +323,24 @@ as well.
 Runtime discovery allows IoT devices to exchange meta-data about the data, potentially along with the
 data exchanged itself. In some cases the meta-data not only describe data but also the interaction model as well. 
 An example of such an approach has been shown with HATEOAS {{HATEOAS}}.
+Another example is that all AllJoyn devices support such runtime discovery
+using a protocol mechanism called "introspection", where the meta-data is 
+queried from the device itself {{AllSeen}}.
 
-TODO (Dave): Probably need to list other examples discussed in the workshop as well.
-For example, AllJoyn introspection.
+There are various models, whether deployed or possible, for such discovery.
+The meta-data might be extracted from a specification, or looked up on a 
+cloud repository (e.g., OneIoTa for OCF models), or looked up via a vendor's
+site, or obtained from the device itself as (such as in the AllJoyn case).  The 
+relevant meta-data might be obtained from the same place, or different
+pieces might be obtained from different places, such as obtaining separately
+information such as (a) syntax information, (b) end-user descriptions in 
+a desired language, and (c) developer-specific comments for implementers.
+
+It was discussed that the availability of runtime discovery can aid in
+semantic translation, such as when a vendor-specific data model on one
+side of a protocol bridge is resolved and the translator can algorithmically 
+derive a semantically-equivalent vendor-specific data model on the other
+side of a protocol bridge, as discussed in {{BridgeTaxonomy}}.
 
 # Translation {#section-5}
 
