@@ -356,11 +356,6 @@ due to the translation between data models.
 
 TODO (Hannes): add discussion of the "red star" diagram
 
-Runtime translation of values in two standard data models can only be
-algorithmically done when the data model on one side is  algorithmically derived
-from the data model on the other side.  This is called a "derived model".
-The participants agreed that algorithm translation will often require custom code. 
-
 Translation can happen in two flavours, namely:
 
 a)  Translating data models at design time: a translation between data model
@@ -369,9 +364,12 @@ can be performed once, such as during design time.
 A single information model can be mapped to a number of different data models.
 
 b)  Translating data between data models at runtime.
+Runtime translation of values in two standard data models can only be
+algorithmically done when the data model on one side is algorithmically derived
+from the data model on the other side.  This is called a "derived model".
 
-TODO (Dave): more info was summarized on the slides and in the notes about three types of
-runtime interactions discussed in the papers (and at the workshop):
+The participants agreed that algorithm translation will generally require
+custom code, whenever one is translating to anything other than a derived model.
 
 Participants were under the impression that it is easier to translate data between systems that
 follow the same communication architecture.
