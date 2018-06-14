@@ -88,11 +88,6 @@ informative:
     author:
     - org: OMA
     date: 2018
-  OMA-Editor:
-    title: OMA LWM2M Object and Resource Editor
-    author:
-    - org: OMA
-    date: 2018
   OMNA:
     title: OMNA Lightweight M2M (LWM2M) Object & Resource Registry
     author:
@@ -145,9 +140,9 @@ This document provides a summary of the 'Workshop on Internet of
 Things (IoT) Semantic Interoperability (IOTSI)',
 which took place in Santa Clara, CA, on March 17-18, 2016.  The main
 goal of the workshop was to foster a discussion on the different
-approaches used by companies and standards developing organizations
+approaches used by companies and standards developing organizations (SDOs)
 to accomplish interoperability at the application layer.  This report
-summarizes the discussions and lists recommendations to the standards
+summarizes the discussions, and lists recommendations to the standards
 community.  The views and positions in this report are those of the
 workshop participants and do not necessarily reflect those of the
 authors and the Internet Architecture Board (IAB), which organized
@@ -170,7 +165,7 @@ complementary to the ongoing engineering efforts performed by working
 groups of the IETF.
 
 With the expansion of the Internet of Things (IoT), interoperability
-becomes more and more important. Standards developing organizations
+becomes more and more important. Standards developing organizations (SDOs)
 have done a tremendous amount of work to standardize new protocols,
 and to profile existing protocols.
 
@@ -178,7 +173,7 @@ At the application layer and at the level of solution frameworks,
 interoperability is not yet mature. Particularly, the
 work on data formats (in the form of data models and information
 models) has not seen the same level of consistency throughout
-standardization groups.
+SDOs.
 
 One common problem is the lack of an encoding-independent standardization
 of the information, the so-called information model. Another problem is
@@ -190,7 +185,7 @@ various application layer protocols.
 
 Thus, the IAB decided to organize a workshop to reach out to relevant
 stakeholders to explore the state-of-the-art and to identify
-communality and gaps {{IOTSIAG}}, {{IOTSIWS}}. In particular, the IAB was
+commonality and gaps {{IOTSIAG}}, {{IOTSIWS}}. In particular, the IAB was
 interested to learn about the following aspects:
 
 * What is the state of the art in data and information models? What should
@@ -269,21 +264,35 @@ rather a range. During the workshop the following problems were discussed:
 
 * Formal Languages for Documentation Purposes
 
-To simplify review and publication, standardization organizations are in
-need of a more formal description of their information and data models.
-For example, the Open Mobile Alliance (OMA), now OMA SpecWorks,
+To simplify review and publication, SDOs need
+formal descriptions of their data and interaction models.
+Several of them use a tabular representation found in the specification itself,
+but use a formal language as an alternative way of describing objects and resources
+for formal purposes.  Some examples of formal language use are as follows.
+
+The Open Mobile Alliance (OMA), now OMA SpecWorks,
 used an XML schema {{LWM2M-Schema}} to describe their object
-and resource definitions, which are available
-for download as XML instance documents.  The XML instance
-documents offer an alternative way of describing objects and resources compared to
-the tabular representation found in the specification itself.  The
-XML files of standardized objects are available for download at
-{{OMNA}}.  Furthermore, an online tool is offered to define new objects and
-resources, which can be found at {{OMA-Editor}}. As another example consider the 
-Generic Attributes (GATT) services and characteristics defined by the Bluetooth SIG for use with 
-Bluetooth Smart/Low Energy. The services and characteristics are also defined as 
-XML instance documents and are shown in a tabular form on the Bluetooth SIG website at 
-{{SIG}}. 
+and resource definitions. The XML files of standardized objects are available for download at
+{{OMNA}}.
+
+The Bluetooth SIG defined Generic Attributes (GATT) services and characteristics for use with 
+Bluetooth Smart/Low Energy. The services and characteristics are shown in a tabular form on 
+the Bluetooth SIG website at {{SIG}}, and are also defined as XML instance documents.
+
+The Open Connectivity Foundation (OCF) uses JSON Schemas to formally define data models,
+and RAML to define interaction models.  The standard files are available online
+at OneIoTa.org.
+
+The AllSeen Alliance uses AllJoyn Introspection XML to define data and interaction
+models in the same formal language, tailored for RPC-style interation.  The standard
+files are available online on the AllSeen Alliance web site, but both standard and
+vendor-defined model files can be obtained by directly querying a device for them at runtime.
+
+The World-Wide Web Consortium (W3C) uses the Resource Description Framework (RDF)
+to define data and interaction models using a format tailored for the web.
+
+The Internet Engineering Task Force (IETF) uses YANG to define data and interaction models.
+Other SDOs may use various other formats.
 
 * Formal Languages for Code Generation
 
@@ -293,7 +302,7 @@ Plugin {{Allseen-Plugin}} offers a wizard to generate code based on
 the formal description of the data model.  Another example of a data
 modelling language that can be used for code generation is YANG.  A
 popular tool to help with code generation of YANG modules is pyang {{PYANG}}.
-An example of a tool that can do code generation for different ecosystems is
+An example of a tool that can do code generation for multiple ecosystems is
 OpenDOF {{OpenDOF}}. Use cases discussed for code generation included easing
 development of server-side device functionality, clients, and compliance tests.
 
@@ -320,27 +329,21 @@ as well.
 
 * Runtime Discovery
 
-Runtime discovery allows IoT devices to exchange meta-data about the data, potentially along with the
-data exchanged itself. In some cases the meta-data not only describe data but also the interaction model as well. 
+Runtime discovery allows IoT devices to exchange metadata about the data, potentially along with the
+data exchanged itself. In some cases the metadata not only describe data but also the interaction model as well. 
 An example of such an approach has been shown with HATEOAS {{HATEOAS}}.
 Another example is that all AllJoyn devices support such runtime discovery
-using a protocol mechanism called "introspection", where the meta-data is 
+using a protocol mechanism called "introspection", where the metadata is 
 queried from the device itself {{AllSeen}}.
 
 There are various models, whether deployed or possible, for such discovery.
-The meta-data might be extracted from a specification, or looked up on a 
+The metadata might be extracted from a specification, or looked up on a 
 cloud repository (e.g., OneIoTa for OCF models), or looked up via a vendor's
 site, or obtained from the device itself as (such as in the AllJoyn case).  The 
-relevant meta-data might be obtained from the same place, or different
+relevant metadata might be obtained from the same place, or different
 pieces might be obtained from different places, such as obtaining separately
 information such as (a) syntax information, (b) end-user descriptions in 
 a desired language, and (c) developer-specific comments for implementers.
-
-It was discussed that the availability of runtime discovery can aid in
-semantic translation, such as when a vendor-specific data model on one
-side of a protocol bridge is resolved and the translator can algorithmically 
-derive a semantically-equivalent vendor-specific data model on the other
-side of a protocol bridge, as discussed in {{BridgeTaxonomy}}.
 
 # Translation {#section-5}
 
@@ -367,6 +370,11 @@ b)  Translating data between data models at runtime.
 Runtime translation of values in two standard data models can only be
 algorithmically done when the data model on one side is algorithmically derived
 from the data model on the other side.  This is called a "derived model".
+It was discussed that the availability of runtime discovery can aid in
+semantic translation, such as when a vendor-specific data model on one
+side of a protocol bridge is resolved and the translator can algorithmically 
+derive the semantically-equivalent vendor-specific data model on the other
+side of a protocol bridge, as discussed in {{BridgeTaxonomy}}.
 
 The participants agreed that algorithm translation will generally require
 custom code, whenever one is translating to anything other than a derived model.
@@ -377,14 +385,14 @@ follow the same communication architecture.
 # Dealing with change {#section-6}
 
 A large part of the workshop was dedicated to the evolution of
-devices and server side applications.  Multiple of the participating
-groups have defined data formats for data representation.
+devices and server side applications.
 Interactions between devices and services and how their relationship
-evolves over time is more related to their respective interaction models.
+evolves over time is complicated by their respective different 
+interaction models.
 
 The workshop discussed various approaches to deal with change.  In the most basic case, a
-developer might use a description of an API and implement whichever
-are the protocol steps.  Sometimes the data or information model can be used to generate code stubs.  Subsequent changes to an API
+developer might use a description of an API and implement 
+the protocol steps.  Sometimes the data or information model can be used to generate code stubs.  Subsequent changes to an API
 require changes on the clients to upgrade to the new version, which
 requires some development of new code to satisfy the needs of the new
 API.
@@ -404,7 +412,7 @@ single entry point with a host providing descriptions of the API
 in-band by means of web links and forms.
 
 By defining IoT-specific relation types, it is possible to drive
-interactions through links instead of hardcoding URIs into the
+interactions through links instead of hardcoding URIs into a RESTful
 client, thus making the system flexible enough for later changes.
 The definition of the basic hypermedia formats for IoT is still work
 in progress. However, some of the existing mechanisms can be reused,
