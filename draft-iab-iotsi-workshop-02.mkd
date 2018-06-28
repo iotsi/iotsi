@@ -320,12 +320,22 @@ from the device at runtime.
 
 * Translation
 
-Gateways and other similar devices need to dynamically
-translate (or map) one data model to another one.  An example of this
-idea can be found in {{UDI}}.
+The working assumption is that devices need to have a common data model 
+with a priori knowledge of data types and actions. However that would imply 
+that each consortia/organization will try to define their own, causing a major 
+interoperability problem, if not a completely intractable one  given
+the ammount of variations, extensions, compositions or versioning changes that
+will happen on a per data model basis. 
 
-TODO (Jaime): Probably need to list other examples discussed in the workshop 
-as well.
+Another potential approach is to have a minimal ammount of information on the
+device to allow for a runtime binding to a specific model. The objective being
+to require as little a prior knowledge as possible. 
+
+Moreover, gateways, bridges  and other similar devices need to dynamically
+translate (or map) one data model to another one. Complexity will increase 
+as there are also multiple protocols and schemas that will make interoperability
+harder to achieve. 
+
 
 * Runtime Discovery
 
