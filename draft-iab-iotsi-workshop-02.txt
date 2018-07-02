@@ -5,7 +5,7 @@
 Network Working Group                                         J. Jimenez
 Internet-Draft                                                  Ericsson
 Intended status: Informational                             H. Tschofenig
-Expires: September 20, 2018                                          ARM
+Expires: September 20, 2018                                     Arm Ltd.
                                                                D. Thaler
                                                                Microsoft
                                                           March 19, 2018
@@ -21,12 +21,13 @@ Abstract
    Things (IoT) Semantic Interoperability (IOTSI)', which took place in
    Santa Clara, CA, on March 17-18, 2016.  The main goal of the workshop
    was to foster a discussion on the different approaches used by
-   companies and standards developing organizations to accomplish
+   companies and standards developing organizations (SDOs) to accomplish
    interoperability at the application layer.  This report summarizes
-   the discussions and lists recommendations to the standards community.
-   The views and positions in this report are those of the workshop
-   participants and do not necessarily reflect those of the authors and
-   the Internet Architecture Board (IAB), which organized the workshop.
+   the discussions, and lists recommendations to the standards
+   community.  The views and positions in this report are those of the
+   workshop participants and do not necessarily reflect those of the
+   authors and the Internet Architecture Board (IAB), which organized
+   the workshop.
 
 Status of This Memo
 
@@ -45,10 +46,9 @@ Status of This Memo
 
    This Internet-Draft will expire on September 20, 2018.
 
-Copyright Notice
 
-   Copyright (c) 2018 IETF Trust and the persons identified as the
-   document authors.  All rights reserved.
+
+
 
 
 
@@ -57,6 +57,11 @@ Jimenez, et al.        Expires September 20, 2018               [Page 1]
 
 Internet-Draft          draft-iab-iotsi-workshop              March 2018
 
+
+Copyright Notice
+
+   Copyright (c) 2018 IETF Trust and the persons identified as the
+   document authors.  All rights reserved.
 
    This document is subject to BCP 78 and the IETF Trust's Legal
    Provisions Relating to IETF Documents
@@ -72,18 +77,17 @@ Table of Contents
 
    1.  Introduction  . . . . . . . . . . . . . . . . . . . . . . . .   2
    2.  Terminology . . . . . . . . . . . . . . . . . . . . . . . . .   4
-   3.  Architecture  . . . . . . . . . . . . . . . . . . . . . . . .   4
-   4.  What Problems to Solve  . . . . . . . . . . . . . . . . . . .   5
-   5.  Translation . . . . . . . . . . . . . . . . . . . . . . . . .   7
-   6.  Dealing with change . . . . . . . . . . . . . . . . . . . . .   8
-   7.  Security Considerations . . . . . . . . . . . . . . . . . . .   9
-   8.  Collaboration . . . . . . . . . . . . . . . . . . . . . . . .   9
-   9.  Acknowledgements  . . . . . . . . . . . . . . . . . . . . . .  10
-   10. Appendix A: Program Committee . . . . . . . . . . . . . . . .  10
-   11. Appendix B: Accepted Position Papers  . . . . . . . . . . . .  10
-   12. Appendix C: List of Participants  . . . . . . . . . . . . . .  13
-   13. Informative References  . . . . . . . . . . . . . . . . . . .  14
-   Authors' Addresses  . . . . . . . . . . . . . . . . . . . . . . .  16
+   3.  What Problems to Solve  . . . . . . . . . . . . . . . . . . .   4
+   4.  Translation . . . . . . . . . . . . . . . . . . . . . . . . .   7
+   5.  Dealing with change . . . . . . . . . . . . . . . . . . . . .   9
+   6.  Security Considerations . . . . . . . . . . . . . . . . . . .  10
+   7.  Collaboration . . . . . . . . . . . . . . . . . . . . . . . .  10
+   8.  Acknowledgements  . . . . . . . . . . . . . . . . . . . . . .  11
+   9.  Appendix A: Program Committee . . . . . . . . . . . . . . . .  11
+   10. Appendix B: Accepted Position Papers  . . . . . . . . . . . .  11
+   11. Appendix C: List of Participants  . . . . . . . . . . . . . .  14
+   12. Informative References  . . . . . . . . . . . . . . . . . . .  16
+   Authors' Addresses  . . . . . . . . . . . . . . . . . . . . . . .  17
 
 1.  Introduction
 
@@ -100,11 +104,7 @@ Table of Contents
    groups of the IETF.
 
    With the expansion of the Internet of Things (IoT), interoperability
-   becomes more and more important.  Standards-developing organizations
-   have done a tremendous amount of work to standardize protocols to
-   simplify implementation and to lower the cost of IoT products.  As a
-   result, new protocols were developed, existing protocols were
-   combined in new ways, and lightweight profiles were defined.
+   becomes more and more important.  Standards developing organizations
 
 
 
@@ -114,23 +114,27 @@ Jimenez, et al.        Expires September 20, 2018               [Page 2]
 Internet-Draft          draft-iab-iotsi-workshop              March 2018
 
 
-   At the application layer, interoperability is not yet mature; the
-   work on data formats (in the form of data models and information
-   models) has not seen the same level of consistency throughout various
-   standardization groups.
+   (SDOs) have done a tremendous amount of work to standardize new
+   protocols, and to profile existing protocols.
+
+   At the application layer and at the level of solution frameworks,
+   interoperability is not yet mature.  Particularly, the work on data
+   formats (in the form of data models and information models) has not
+   seen the same level of consistency throughout SDOs.
 
    One common problem is the lack of an encoding-independent
    standardization of the information, the so-called information model.
    Another problem is the strong relationship with the underlying
-   communication architecture, such as an RPC or a RESTful design.
-   Furthermore, different groups develop similar concepts that only
-   differ slightly, leading to interoperability problems.  Finally, some
-   groups favor different encodings for use with various application
-   layer protocols.
+   communication architecture, such as an Remote Procedure Call (RPC) or
+   a RESTful design.  Furthermore, groups develop solutions that are
+   very similar on the surface but differ slightly in their standardized
+   outcome, leading to interoperability problems.  Finally, some groups
+   favor different encodings for use with various application layer
+   protocols.
 
    Thus, the IAB decided to organize a workshop to reach out to relevant
    stakeholders to explore the state-of-the-art and to identify
-   communality and gaps [IOTSIAG], [IOTSIWS].  In particular, the IAB
+   commonality and gaps [IOTSIAG], [IOTSIWS].  In particular, the IAB
    was interested to learn about the following aspects:
 
    o  What is the state of the art in data and information models?  What
@@ -159,10 +163,6 @@ Internet-Draft          draft-iab-iotsi-workshop              March 2018
       groups and organizations so unique that there is no possibility
       for cooperation?
 
-   o  How can organizations better work together to increase awareness
-      and information sharing?
-
-
 
 
 Jimenez, et al.        Expires September 20, 2018               [Page 3]
@@ -170,16 +170,19 @@ Jimenez, et al.        Expires September 20, 2018               [Page 3]
 Internet-Draft          draft-iab-iotsi-workshop              March 2018
 
 
+   o  How can organizations better work together to increase awareness
+      and information sharing?
+
 2.  Terminology
 
-   The first roadblock to semantic interoperability is the lack of a
-   common vocabulary to start the discussion.  [RFC3444] provides a
-   starting point by separating conceptual models for designers, or
-   "information models", from concrete detailed definitions for
-   implementers, or "data models".  There are concepts that are
-   undefined in that RFC and elsewhere, such as the interaction with the
-   resources of an endpoint, or "interaction model".  Therefore the
-   three "main" common models that were identified were:
+   The first roadblock to interoperability at the level of data models
+   is the lack of a common vocabulary to start the discussion.
+   [RFC3444] provides a starting point by separating conceptual models
+   for designers, or "information models", from concrete detailed
+   definitions for implementers, or "data models".  There are concepts
+   that are undefined in that RFC and elsewhere, such as the interaction
+   with the resources of an endpoint, or "interaction model".  Therefore
+   the three "main" common models that were identified were:
 
    Information Model
       An information model defines an environment at the highest level
@@ -210,14 +213,11 @@ Internet-Draft          draft-iab-iotsi-workshop              March 2018
    create various terminology documents.  The participants agreed to set
    up a github repository [IOTSIGIT] for sharing information.
 
-3.  Architecture
+3.  What Problems to Solve
 
-   Various architectures follow different design patterns.  Some are
-   REST- oriented with a limited set of standard methods to find and
-   manipulate resources on endpoints.  Others are RPC-like, with a rich
-   set of methods that may vary by resource type.  Still others are more
-   Publish/Subscribe-oriented that focus on the flow of information
-   based on the topics of the information that is being shared.
+   The participants agreed that there is not simply a single problem to
+   be solved, but rather a range.  During the workshop the following
+   problems were discussed:
 
 
 
@@ -226,74 +226,43 @@ Jimenez, et al.        Expires September 20, 2018               [Page 4]
 Internet-Draft          draft-iab-iotsi-workshop              March 2018
 
 
-   TODO: The 3 items below need to be rewritten, perhaps as normal
-   paragraphs, as they're hard to follow and it's unclear what the
-   purpose of the "list" is.
-
-   Thing-hub-cloud
-      Things talk to some type of hub or gateway, which talks back to
-      them and to the cloud.  There is a spectrum of emphasis on the hub
-      vs. the cloud.  For some, the hub is simply an IP router that
-      connects different link layer technologies, but for others it is a
-      critical place for maintaining local control.
-
-   Meta Thing
-      Some things are actually a composite of other things, like an
-      alarm composed of a clock, lights, and thermostat.
-
-   Nearby things
-      Some things may be geospatially related even if they are not on
-      the same network or within the same administrative domain.
-
-   Current data models and definitions for "things" often focus on
-   defining actual physical devices and representing their state.  That
-   focus should perhaps be shifted into a more holistic or user-oriented
-   perspective, defining abstract concepts as well.  On the other hand,
-   a lot of focus is placed on human interaction with physical devices,
-   while IoT may often be more focussed on interaction between "things"
-   instead.
-
-   Those things should be designed to be multi-purpose, keeping in mind
-   that solutions should be open-ended to facilitate new usages and new
-   future domains of operation.  This pattern has already happened,
-   where devices that were intended for one purpose ended up being used
-   for a different one given the right context (e.g., a smart phone LED
-   light was used as a heartrate monitor).
-
-4.  What Problems to Solve
-
-   The participants agreed that there is not simply a single problem to
-   be solved, but rather a range.  At least the following problems were
-   discussed:
-
    o  Formal Languages for Documentation Purposes
 
-   To simplify review and publication, standardization organizations are
-   in need of a more formal description of their information and data
-   models.  For example, the Open Mobile Alliance (OMA) used an XML
-   schema [LWM2M-Schema] to describe their object definitions (i.e.,
-   data model) and the actual object definitions are available for
-   download as XML instance documents.  These XML documents offer an
+   To simplify review and publication, SDOs need formal descriptions of
+   their data and interaction models.  Several of them use a tabular
+   representation found in the specification itself, but use a formal
+   language as an alternative way of describing objects and resources
+   for formal purposes.  Some examples of formal language use are as
+   follows.
 
+   The Open Mobile Alliance (OMA), now OMA SpecWorks, used an XML schema
+   [LWM2M-Schema] to describe their object and resource definitions.
+   The XML files of standardized objects are available for download at
+   [OMNA].
 
+   The Bluetooth SIG defined Generic Attributes (GATT) services and
+   characteristics for use with Bluetooth Smart/Low Energy.  The
+   services and characteristics are shown in a tabular form on the
+   Bluetooth SIG website at [SIG], and are also defined as XML instance
+   documents.
 
-Jimenez, et al.        Expires September 20, 2018               [Page 5]
-
-Internet-Draft          draft-iab-iotsi-workshop              March 2018
+   The Open Connectivity Foundation (OCF) uses JSON Schemas to formally
+   define data models, and RAML to define interaction models.  The
+   standard files are available online at OneIoTa.org.
 
+   The AllSeen Alliance uses AllJoyn Introspection XML to define data
+   and interaction models in the same formal language, tailored for RPC-
+   style interation.  The standard files are available online on the
+   AllSeen Alliance web site, but both standard and vendor-defined model
+   files can be obtained by directly querying a device for them at
+   runtime.
 
-   alternative way of describing objects compared to the tabular
-   representation found in the specification itself.  The XML files of
-   standardized objects are available for download at [OMNA].
-   Furthermore, a tool is offered to define new objects and resources.
-   The online editor tool can be found at [OMA-Editor].
+   The World-Wide Web Consortium (W3C) uses the Resource Description
+   Framework (RDF) to define data and interaction models using a format
+   tailored for the web.
 
-   TODO: It might appear unfair to just call out a single organization
-   above, which implies that mechanism is somehow better than the other
-   organizations present that have other formal languages, especially
-   when the workshop mentioned multiple.  W3C uses RDF, OCF uses
-   JSON+RAML, AllSeen uses XML with a specific XSD, etc.  Should either
-   use multiple examples, or no examples.
+   The Internet Engineering Task Force (IETF) uses YANG to define data
+   and interaction models.  Other SDOs may use various other formats.
 
    o  Formal Languages for Code Generation
 
@@ -304,7 +273,15 @@ Internet-Draft          draft-iab-iotsi-workshop              March 2018
    data modelling language that can be used for code generation is YANG.
    A popular tool to help with code generation of YANG modules is pyang
    [PYANG].  An example of a tool that can do code generation for
-   different ecosystems is OpenDOF [OpenDOF].  Use cases discussed for
+   multiple ecosystems is OpenDOF [OpenDOF].  Use cases discussed for
+
+
+
+Jimenez, et al.        Expires September 20, 2018               [Page 5]
+
+Internet-Draft          draft-iab-iotsi-workshop              March 2018
+
+
    code generation included easing development of server-side device
    functionality, clients, and compliance tests.
 
@@ -323,12 +300,35 @@ Internet-Draft          draft-iab-iotsi-workshop              March 2018
 
    o  Translation
 
-   Gateways and other similar devices need to dynamically translate (or
-   map) one data model to another one.  An example of this idea can be
-   found in [UDI].
+   The working assumption is that devices need to have a common data
+   model with a priori knowledge of data types and actions.  However
+   that would imply that each consortia/organization will try to define
+   their own, causing a major interoperability problem, if not a
+   completely intractable one given the ammount of variations,
+   extensions, compositions or versioning changes that will happen on a
+   per data model basis.
 
-   TODO: Probably need to list other examples discussed in the workshop
-   as well.
+   Another potential approach is to have a minimal ammount of
+   information on the device to allow for a runtime binding to a
+   specific model.  The objective being to require as little a prior
+   knowledge as possible.
+
+   Moreover, gateways, bridges and other similar devices need to
+   dynamically translate (or map) one data model to another one.
+   Complexity will increase as there are also multiple protocols and
+   schemas that will make interoperability harder to achieve.
+
+   o  Runtime Discovery
+
+   Runtime discovery allows IoT devices to exchange metadata about the
+   data, potentially along with the data exchanged itself.  In some
+   cases the metadata not only describe data but also the interaction
+   model as well.  An example of such an approach has been shown with
+   HATEOAS [HATEOAS].  Another example is that all AllJoyn devices
+   support such runtime discovery using a protocol mechanism called
+   "introspection", where the metadata is queried from the device itself
+   [AllSeen].
+
 
 
 
@@ -338,54 +338,54 @@ Jimenez, et al.        Expires September 20, 2018               [Page 6]
 Internet-Draft          draft-iab-iotsi-workshop              March 2018
 
 
-   o  Runtime Discovery
+   There are various models, whether deployed or possible, for such
+   discovery.  The metadata might be extracted from a specification, or
+   looked up on a cloud repository (e.g., OneIoTa for OCF models), or
+   looked up via a vendor's site, or obtained from the device itself as
+   (such as in the AllJoyn case).  The relevant metadata might be
+   obtained from the same place, or different pieces might be obtained
+   from different places, such as obtaining separately information such
+   as (a) syntax information, (b) end-user descriptions in a desired
+   language, and (c) developer-specific comments for implementers.
 
-   Allow IoT devices to exchange information, potentially along with the
-   data exchange, to discover meta-data about the data and, potentially,
-   even a self-describing interaction model.  An example of such an
-   approach has been shown with HATEOAS [HATEOAS].
-
-   TODO: Probably need to list other examples discussed in the workshop
-   as well.  For example, AllJoyn introspection.
-
-5.  Translation
+4.  Translation
 
    In an ideal world where organizations and companies cooperate and
    agree on a single data model standard, there is no need for gateways
    that translate from one data model to the other one.  However, this
    is far from reality today, and there are many proprietary data models
-   in addition to the already standardized ones.  There are analogies
-   with gateways back in the 1980s that were used to translate between
-   network layer protocols.  Eventually IP took over, providing the
-   necessary end-to-end interoperability at the network layer.
-   Unfortunately, the introduction of translation gateways that lead to
-   the loss of expressiveness due to the translation between data models
-   seems unavoidable.
+   in addition to the already standardized ones.  As a consequence,
+   gateways are needed to translate between data models.  This leads to
+   n^2-n combinations, in the worse case.
 
-   TODO: add discussion of the "red star" diagram
+   There are analogies with gateways back in the 1980s that were used to
+   translate between network layer protocols.  Eventually IP took over,
+   providing the necessary end-to-end interoperability at the network
+   layer.  Unfortunately, the introduction of gateways leads to the loss
+   of expressiveness due to the translation between data models.  The
+   functionality of IP was so valuable in the market that advanced
+   features of other networking protocols became less attractive and
+   were not used anymore.
 
-   TODO: add key point discussed that translation between two standard
-   data models requires specific code, it cannot be algorithmically
-   derived based on the two formal descriptions.  It can only be
-   algorithmically done when the actual data model on one side is
-   actually algorithmically derived from the one on the other side.
-   This is called a "derived model".
+   Participants discussed an alternative, called 'red star' shown in
+   Figure 1, where data models are translated to the data model shown in
+   the middle.  This reduces the number of translations that are needed
+   down to 2n (in the best case).  Of course, everyone wants to be the
+   red star data model.
 
-   Translation can happen in two flavours, namely:
 
-   a) Translating formal descriptions between data models: a translation
-   between data model descriptions, such as translating a YANG model to
-   a RAML/JSON model, can be performed once such as during design time.
-   A single information model can be mapped to a number of different
-   data models.  b) Translating data between data models: this flavour
-   implies doing translation at runtime.
 
-   TODO: more info was summarized on the slides and in the notes about
-   three types of runtime interactions discussed in the papers (and at
-   the workshop):
 
-   In one sense, these distinctions affect when the relevant translation
-   is performed.  It can be done at "design time" when the information
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -394,54 +394,54 @@ Jimenez, et al.        Expires September 20, 2018               [Page 7]
 Internet-Draft          draft-iab-iotsi-workshop              March 2018
 
 
-   model is done, or it can be done at runtime for a concrete data model
-   and it can be done depending on the actual serialization.
+      +-----+                                        +-----+
+      |     |                                        |     |
+      |     |  --                                 -- |     |
+      |     |    --                             --   |     |
+      +-----+      --                         --     +-----+
+                     --                    ---
+                       --                --
+                         --            --
+                           --        --
+        ---                  --    --                  ---
+       /   \                   /o\                    /   \
+      |     | ----------------/ooo\----------------  |     |
+       \   /                  \ooo/                   \   /
+        ---                  //\o/ --                  ---
+                           //        --
+                         //            --
+                       //                ---
+                     //                     --
+                   //                         --
+         /\      //                             --      /\
+        / \    //                                 --   / \
+       /   \  /                                       /   \
+       /   \                                          /   \
+      /------                                        /------
 
-   Yet another distinction will appear depending on the requirements
-   from the application protocols.  RPC-style ones might require a
-   slightly different data model than RESTful ones for similar
-   operations.  For example, SNMP-traps could be similar to CoAP-
-   Observations but not quite the same.  It is easier to translate
-   between systems that follow the same architecture/design pattern than
-   across architectures, and sometimes a full translation might not even
-   be possible (e.g., stateless vs stateful systems).
+           Figure 1: The 'Red Star' in Data/Information Models.
 
-6.  Dealing with change
+   While the workshop itself was not a suitable forum to discuss the
+   design of such translation model several questions were raised:
 
-   A large part of the workshop was dedicated to the evolution of
-   devices and server side applications.  Multiple of the participating
-   groups have defined data formats for data representation.
-   Interactions between devices and services and how their relationship
-   evolves over time is more related to their respective interaction
-   models.
+   o  Do we need a red star that does everything or could we design
+      something that offers a more restricted functionality?
 
-   The workshop discussed various approaches to dealing with change.  In
-   the most primitive case, a developer might use a description of an
-   API and implement whichever are the protocol steps.  In some cases
-   the information model itself can be used to generate some of the code
-   stubs.  Subsequent changes to an API require changes on the clients
-   to upgrade to the new version, which requires some development of new
-   code to satisfy the needs of the new API.
+   o  How do we handle loss of data and loss of functionality?
 
-   These interactions could be made machine-understandable in the first
-   place, enabling for changes to happen at runtime.  In that scenario,
-   a machine client could discover the possible interactions with a
-   service, adapting to changes as they occur without specific code
-   being developed to adapt to them.
+   o  Should data be translated between data models or data models be
+      translated?
 
-   The challenge seems to be to define the human-readable parts as
-   machine-readable.  Machine-readable languages require a shared
-   vocabulary to give meaning to the tags.
+   o  How can interaction models be translated?  It needs to be dealt
+      with in addition to the data model.
 
-   These types of interactions are often based on the REST architectural
-   style.  Its principle is that a device or endpoint only needs a
-   single entry point with a host providing descriptions of the API in-
-   band by means of web links and forms.
+   o  Many (if not all) data and interaction models have some bizarre
+      functionality that cannot be translated easily.  How can those be
+      handled?
 
-   By defining IoT-specific relation types, it is possible to drive
-   interactions through links instead of hardcoding URIs into the
-   client, thus making the system flexible enough for later changes.
-   The definition of the basic hypermedia formats for IoT is still work
+   o  What limitations are we going to accept in these translations?
+
+   o  When should translation happen?
 
 
 
@@ -450,10 +450,75 @@ Jimenez, et al.        Expires September 20, 2018               [Page 8]
 Internet-Draft          draft-iab-iotsi-workshop              March 2018
 
 
-   in progress, however some of the existing mechanisms can be reused,
+   a) Design time: a translation between data model descriptions, such
+   as translating a YANG model to a RAML/JSON model, can be performed
+   once, such as during design time.  A single information model can be
+   mapped to a number of different data models.
+
+   b) Run time: Runtime translation of values in two standard data
+   models can only be algorithmically done when the data model on one
+   side is algorithmically derived from the data model on the other
+   side.  This is called a "derived model".  It was discussed that the
+   availability of runtime discovery can aid in semantic translation,
+   such as when a vendor-specific data model on one side of a protocol
+   bridge is resolved and the translator can algorithmically derive the
+   semantically-equivalent vendor-specific data model on the other side
+   of a protocol bridge, as discussed in [BridgeTaxonomy].
+
+   The participants agreed that algorithm translation will generally
+   require custom code, whenever one is translating to anything other
+   than a derived model.
+
+   Participants were under the impression that it is easier to translate
+   data between systems that follow the same communication architecture.
+
+5.  Dealing with change
+
+   A large part of the workshop was dedicated to the evolution of
+   devices and server side applications.  Interactions between devices
+   and services and how their relationship evolves over time is
+   complicated by their respective different interaction models.
+
+   The workshop discussed various approaches to deal with change.  In
+   the most basic case, a developer might use a description of an API
+   and implement the protocol steps.  Sometimes the data or information
+   model can be used to generate code stubs.  Subsequent changes to an
+   API require changes on the clients to upgrade to the new version,
+   which requires some development of new code to satisfy the needs of
+   the new API.
+
+   These interactions could be made machine-understandable in the first
+   place, enabling for changes to happen at runtime.  In that scenario,
+   a machine client could discover the possible interactions with a
+   service, adapting to changes as they occur without specific code
+   being developed to adapt to them.
+
+   The challenge seems to be to code the human-readable specification
+   into a machine-readable format.  Machine-readable languages require a
+   shared vocabulary to give meaning to the tags.
+
+
+
+
+
+Jimenez, et al.        Expires September 20, 2018               [Page 9]
+
+Internet-Draft          draft-iab-iotsi-workshop              March 2018
+
+
+   These types of interactions are often based on the REST architectural
+   style.  Its principle is that a device or endpoint only needs a
+   single entry point with a host providing descriptions of the API in-
+   band by means of web links and forms.
+
+   By defining IoT-specific relation types, it is possible to drive
+   interactions through links instead of hardcoding URIs into a RESTful
+   client, thus making the system flexible enough for later changes.
+   The definition of the basic hypermedia formats for IoT is still work
+   in progress.  However, some of the existing mechanisms can be reused,
    such as resource discovery, forms, or links.
 
-7.  Security Considerations
+6.  Security Considerations
 
    There were two types of security considerations discussed: use of
    formal data models for security configuration, and security of data
@@ -462,10 +527,10 @@ Internet-Draft          draft-iab-iotsi-workshop              March 2018
    It was observed that the security assumptions and configuration, or
    "security model", varies by ecosystem today, making the job of a
    translator difficult.  For example, the types of security principals
-   (e.g., user vs. device vs. application), the use of ACLs vs.
-   capabilities, and what types of policies can be expressed, all vary
-   by ecosystem.  As a result, the security model architecture generally
-   dictates where translation can be done.
+   (e.g., user vs. device vs. application), the use of access control
+   lists (ACLs) vs. capabilities, and what types of policies can be
+   expressed, all vary by ecosystem.  As a result, the security model
+   architecture generally dictates where translation can be done.
 
    One approach discussed was whether two endpoints might be able to use
    some overlay security model, across a translator between two
@@ -482,13 +547,21 @@ Internet-Draft          draft-iab-iotsi-workshop              March 2018
    Still, it was observed that being able to dynamically learn security
    requirements might help provide better UIs and translators.
 
-8.  Collaboration
+7.  Collaboration
 
    The participants discussed how best to share information among their
    various organizations.  One discussion was around having joint
    meetings.  One current challenge reported was that organizations were
    not aware of when and where each others' meetings were scheduled, and
-   sharing such information could help organizations better colocate
+   sharing such information could help organizations better collocate
+
+
+
+Jimenez, et al.        Expires September 20, 2018              [Page 10]
+
+Internet-Draft          draft-iab-iotsi-workshop              March 2018
+
+
    meetings.  To facilitate this exchange, the participants agreed to
    add links to their respective meeting schedules from a common page in
    the IOTSI repository [IOTSIGIT].
@@ -498,18 +571,10 @@ Internet-Draft          draft-iab-iotsi-workshop              March 2018
    could better facilitate reuse of the same information model.  To
    facilitate this exchange, this participants discussed whether a
    common repository might be used by multiple organizations.  The OCF's
-
-
-
-Jimenez, et al.        Expires September 20, 2018               [Page 9]
-
-Internet-Draft          draft-iab-iotsi-workshop              March 2018
-
-
    OneIoTa repository was discussed as one possibility but it was
-   reported that its Terms of Use at the time of the workship prevented
+   reported that its terms of use at the time of the workshop prevented
    this.  The OCF agreed to take this back and look at updating the
-   Terms of Use to allow other organizations to use it too, as the
+   terms of use to allow other organizations to use it too, as the
    restriction was not the intent.  Schema.org was discussed as another
    possibility.  In the meantime, the participants agreed to add links
    to their respective repositories from a common page in the IOTSI
@@ -519,18 +584,18 @@ Internet-Draft          draft-iab-iotsi-workshop              March 2018
    open and available for sharing information between all relevant
    organizations.
 
-9.  Acknowledgements
+8.  Acknowledgements
 
    We would like to thank all paper authors and participants for their
    contributions, and Ericsson for hosting the workshop.
 
-10.  Appendix A: Program Committee
+9.  Appendix A: Program Committee
 
    This workshop was organized by the following individuals: Jari Arkko,
    Ralph Droms, Jaime Jimenez, Michael Koster, Dave Thaler, and Hannes
    Tschofenig.
 
-11.  Appendix B: Accepted Position Papers
+10.  Appendix B: Accepted Position Papers
 
    o  Jari Arkko, "Gadgets and Protocols Come and Go, Data Is Forever"
 
@@ -545,6 +610,14 @@ Internet-Draft          draft-iab-iotsi-workshop              March 2018
       interoperable IoT services for major Building Automation and
       Lighting Control ecosystems"
 
+
+
+
+Jimenez, et al.        Expires September 20, 2018              [Page 11]
+
+Internet-Draft          draft-iab-iotsi-workshop              March 2018
+
+
    o  Universal Devices, "Object Oriented Approach to IoT
       Interoperability"
 
@@ -552,15 +625,6 @@ Internet-Draft          draft-iab-iotsi-workshop              March 2018
 
    o  Stephen Farrell, Alissa Cooper, "It's Often True: Security's
       Ignored (IOTSI) - and Privacy too"
-
-
-
-
-
-Jimenez, et al.        Expires September 20, 2018              [Page 10]
-
-Internet-Draft          draft-iab-iotsi-workshop              March 2018
-
 
    o  Christian Groves, Lui Yan, ang Weiwei, "Overview of IoT semantics
       landscape"
@@ -602,6 +666,14 @@ Internet-Draft          draft-iab-iotsi-workshop              March 2018
 
    o  Marcello Lioy, "AllJoyn"
 
+
+
+
+Jimenez, et al.        Expires September 20, 2018              [Page 12]
+
+Internet-Draft          draft-iab-iotsi-workshop              March 2018
+
+
    o  Kerry Lynn, Laird Dornin, "Modeling RESTful APIs with JSON Hyper-
       Schema"
 
@@ -610,13 +682,6 @@ Internet-Draft          draft-iab-iotsi-workshop              March 2018
 
    o  Open Geospatial Consortium, "OGC SensorThings API: Communicating
       "Where" in the Web of Things"
-
-
-
-Jimenez, et al.        Expires September 20, 2018              [Page 11]
-
-Internet-Draft          draft-iab-iotsi-workshop              March 2018
-
 
    o  Jean Paoli, Taqi Jaffri, "IoT Information Model Interoperability:
       An Open, Crowd-Sourced Approach in Three Parallel Parti"
@@ -656,6 +721,15 @@ Internet-Draft          draft-iab-iotsi-workshop              March 2018
 
    o  Andrew Sullivan, "Position paper for IOTSI workshop"
 
+
+
+
+
+Jimenez, et al.        Expires September 20, 2018              [Page 13]
+
+Internet-Draft          draft-iab-iotsi-workshop              March 2018
+
+
    o  Darshak Thakore, "IoT Security in the context of Semantic
       Interoperability"
 
@@ -664,16 +738,6 @@ Internet-Draft          draft-iab-iotsi-workshop              March 2018
    o  Dave Thaler, S"ummary of AllSeen Alliance Work Relevant to
       Semantic Interoperability"
 
-
-
-
-
-
-Jimenez, et al.        Expires September 20, 2018              [Page 12]
-
-Internet-Draft          draft-iab-iotsi-workshop              March 2018
-
-
    o  Mark Underwood, Michael Gruninger, Leo Obrst, Ken Baclawski, Mike
       Bennett, Gary Berg-Cross, Torsten Hahmann, Ram Sriram, "Internet
       of Things: Toward Smart Networked Systems and Societies"
@@ -681,7 +745,7 @@ Internet-Draft          draft-iab-iotsi-workshop              March 2018
    o  Peter van der Stok, Andy Bierman, "YANG-Based Constrained
       Management Interface (CoMI)"
 
-12.  Appendix C: List of Participants
+11.  Appendix C: List of Participants
 
    o  Andy Bierman, YumaWorks
 
@@ -715,6 +779,13 @@ Internet-Draft          draft-iab-iotsi-workshop              March 2018
 
    o  Ari Keraenen, Ericsson
 
+
+
+Jimenez, et al.        Expires September 20, 2018              [Page 14]
+
+Internet-Draft          draft-iab-iotsi-workshop              March 2018
+
+
    o  Michael Koster, SmartThings
 
    o  Matthias Kovatsch, Siemens
@@ -722,13 +793,6 @@ Internet-Draft          draft-iab-iotsi-workshop              March 2018
    o  Kai Kreuzer, Deutsche Telekom
 
    o  Barry Leiba, Huawei
-
-
-
-Jimenez, et al.        Expires September 20, 2018              [Page 13]
-
-Internet-Draft          draft-iab-iotsi-workshop              March 2018
-
 
    o  Steve Liang, Uni Calgary
 
@@ -768,28 +832,39 @@ Internet-Draft          draft-iab-iotsi-workshop              March 2018
 
    o  Michael Verschoor, Philips Lightning
 
-13.  Informative References
-
-   [AllJoynExplorer]
-              Microsoft, "AllJoyn Explorer", 2016.
-
-   [Allseen-Plugin]
-              Rockwell, B., "Using the AllJoyn Studio Extension", 2016.
 
 
 
 
 
-
-Jimenez, et al.        Expires September 20, 2018              [Page 14]
+Jimenez, et al.        Expires September 20, 2018              [Page 15]
 
 Internet-Draft          draft-iab-iotsi-workshop              March 2018
 
 
+12.  Informative References
+
+   [AllJoynExplorer]
+              Microsoft, "AllJoyn Explorer", 2016.
+
+   [AllSeen]  Thaler, D., "Summary of AllSeen Alliance Work Relevant to
+              Semantic Interoperability", 2016, <https://www.iab.org/wp-
+              content/IAB-uploads/2016/03/AllSeen-summary-IOTSI.pdf>.
+
+   [Allseen-Plugin]
+              Rockwell, B., "Using the AllJoyn Studio Extension", 2016.
+
+   [BridgeTaxonomy]
+              Thaler, D., "IoT Bridge Taxonomy", 2016,
+              <https://www.iab.org/wp-content/IAB-uploads/2016/03/
+              DThaler-IOTSI.pdf>.
+
    [HATEOAS]  Kovatsch, M., "Semantic Interoperability Requires Self-
               describing Interaction Models - HATEOAS for the Internet
               of Things", Proceedings of the IoT Semantic
-              Interoperability Workshop 2016, 2016.
+              Interoperability Workshop 2016, 2016,
+              <https://www.iab.org/wp-content/IAB-uploads/2016/03/2016-
+              IAB-HATEOAS.pdf>.
 
    [IOTSIAG]  IAB, "IoT Workshop for Semantic Interoperability (IOTSI) -
               Agenda and Slides", 2016,
@@ -804,43 +879,41 @@ Internet-Draft          draft-iab-iotsi-workshop              March 2018
               <https://www.iab.org/activities/workshops/iotsi/>.
 
    [LWM2M-Schema]
-              OMA, "OMA LWM2M XML Schema", 2016.
-
-   [OMA-Editor]
-              OMA, "OMA LWM2M Object and Resource Editor", 2016.
-
-   [OMNA]     OMA, "OMNA Lightweight M2M (LWM2M) Object & Resource
-              Registry", 2016.
-
-   [OpenDOF]  OpenDOF, "The OpenDOF Project", 2015,
-              <https://opendof.org>.
-
-   [PYANG]    Bjorklund, M., "An extensible YANG validator and converter
-              in python", 2016.
-
-   [RFC3444]  Pras, A. and J. Schoenwaelder, "On the Difference between
-              Information Models and Data Models", RFC 3444, DOI
-              10.17487/RFC3444, January 2003, <https://www.rfc-
-              editor.org/info/rfc3444>.
-
-   [UDI]      Kohanim, M., "Object Oriented Approach to IoT
-              Interoperability", Proceedings of the IoT Workshop for
-              Semantic Interoperability (IOTSI), 2016.
+              OMA, "OMA LWM2M XML Schema", 2018.
 
    [nRF-Sniffer]
               Nordic Semiconductor, "nRF Sniffer - Smart/Bluetooth low
               energy packet sniffer", 2016.
 
+   [OMNA]     OMA, "OMNA Lightweight M2M (LWM2M) Object & Resource
+              Registry", 2018.
+
+   [OpenDOF]  OpenDOF, "The OpenDOF Project", 2015,
+              <https://opendof.org>.
 
 
 
-
-
-
-Jimenez, et al.        Expires September 20, 2018              [Page 15]
+Jimenez, et al.        Expires September 20, 2018              [Page 16]
 
 Internet-Draft          draft-iab-iotsi-workshop              March 2018
 
+
+   [PYANG]    Bjorklund, M., "An extensible YANG validator and converter
+              in python", 2016.
+
+   [RFC3444]  Pras, A. and J. Schoenwaelder, "On the Difference between
+              Information Models and Data Models", RFC 3444,
+              DOI 10.17487/RFC3444, January 2003, <https://www.rfc-
+              editor.org/info/rfc3444>.
+
+   [SIG]      Bluetooth SIG, "GATT Specifications", 2018,
+              <https://www.bluetooth.com/specifications/gatt>.
+
+   [UDI]      Kohanim, M., "Object Oriented Approach to IoT
+              Interoperability", Proceedings of the IoT Workshop for
+              Semantic Interoperability (IOTSI), 2016,
+              <https://www.iab.org/wp-content/IAB-uploads/2016/03/UDI-
+              Position-Paper-OO-Approach-to-IoT-Interoperability.pdf>.
 
 Authors' Addresses
 
@@ -851,7 +924,7 @@ Authors' Addresses
 
 
    Hannes Tschofenig
-   ARM
+   Arm Ltd.
 
    Email: hannes.tschofenig@arm.com
 
@@ -876,21 +949,4 @@ Authors' Addresses
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-Jimenez, et al.        Expires September 20, 2018              [Page 16]
+Jimenez, et al.        Expires September 20, 2018              [Page 17]

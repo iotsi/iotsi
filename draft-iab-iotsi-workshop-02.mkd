@@ -22,7 +22,7 @@ author:
   email: jaime.jimenez@ericsson.com
 - ins: H. Tschofenig
   name: Hannes Tschofenig
-  org: ARM
+  org: Arm Ltd.
   email: hannes.tschofenig@arm.com
 - ins: D. Thaler
   name: Dave Thaler
@@ -360,24 +360,77 @@ a desired language, and (c) developer-specific comments for implementers.
 In an ideal world where organizations and companies cooperate and agree on a
 single data model standard, there is no need for gateways that translate from one data model
 to the other one. However, this is far from reality today, and there are many
-proprietary data models in addition to the already standardized ones. There
-are analogies with gateways back in the 1980s that were used to
+proprietary data models in addition to the already standardized ones. As a 
+consequence, gateways are needed to translate between data models. This leads to 
+n^2-n combinations, in the worse case. 
+
+There are analogies with gateways back in the 1980s that were used to
 translate between network layer protocols.  Eventually IP took over, providing
 the necessary end-to-end interoperability at the network layer. Unfortunately,
 the introduction of gateways leads to the loss of expressiveness
-due to the translation between data models.
+due to the translation between data models. The functionality of IP was so 
+valuable in the market that advanced features of other networking 
+protocols became less attractive and were not used anymore. 
 
-TODO (Hannes): add discussion of the "red star" diagram
+Participants discussed an alternative, called 'red star' shown in {{red-star}}, 
+where data models are translated to the data model shown in the middle. This 
+reduces the number of translations that are needed down to 2n (in the best case). 
+Of course, everyone wants to be the red star data model. 
 
-Translation can happen in two flavours, namely:
+~~~~
+   +-----+                                        +-----+
+   |     |                                        |     |
+   |     |  --                                 -- |     |
+   |     |    --                             --   |     |
+   +-----+      --                         --     +-----+
+                  --                    ---
+                    --                --
+                      --            --
+                        --        --
+     ---                  --    --                  ---
+    /   \                   /o\                    /   \
+   |     | ----------------/ooo\----------------  |     |
+    \   /                  \ooo/                   \   /
+     ---                  //\o/ --                  ---   
+                        //        --
+                      //            --
+                    //                ---
+                  //                     --
+                //                         --
+      /\      //                             --      /\
+     / \    //                                 --   / \
+    /   \  /                                       /   \
+    /   \                                          /   \
+   /------                                        /------
+~~~~
+{: #red-star title="The 'Red Star' in Data/Information Models."}
 
-a)  Translating data models at design time: a translation between data model
+While the workshop itself was not a suitable forum to discuss the design of 
+such translation model several questions were raised: 
+
+ * Do we need a red star that does everything or could we design something that 
+offers a more restricted functionality? 
+
+ * How do we handle loss of data and loss of functionality? 
+
+ * Should data be translated between data models or data models be translated? 
+
+ * How can interaction models be translated? It needs to be dealt with in addition 
+ to the data model. 
+
+ * Many (if not all) data and interaction models have some bizarre functionality 
+ that cannot be translated easily. How can those be handled? 
+
+ * What limitations are we going to accept in these translations? 
+
+ * When should translation happen? 
+
+a)  Design time: a translation between data model
 descriptions, such as translating a YANG model to a RAML/JSON model,
 can be performed once, such as during design time.
 A single information model can be mapped to a number of different data models.
 
-b)  Translating data between data models at runtime.
-Runtime translation of values in two standard data models can only be
+b)  Run time: Runtime translation of values in two standard data models can only be
 algorithmically done when the data model on one side is algorithmically derived
 from the data model on the other side.  This is called a "derived model".
 It was discussed that the availability of runtime discovery can aid in
