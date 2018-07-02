@@ -14,7 +14,7 @@ pi:
 title: Report from the Internet of Things (IoT) Semantic Interoperability (IOTSI)
   Workshop 2016
 abbrev: draft-iab-iotsi-workshop
-date: 2018-03-19
+date: 2018-07-02
 author:
 - ins: J. Jimenez
   name: Jaime Jimenez
@@ -30,7 +30,7 @@ author:
   email: dthaler@microsoft.com
 informative:
   RFC3444:
-  Allseen-Plugin:
+  AllSeen-Plugin:
     title: Using the AllJoyn Studio Extension
     author:
     - ins: B. Rockwell
@@ -106,16 +106,6 @@ informative:
       name: M. Bjorklund
       org: ''
     date: 2016
-  UDI:
-    target: https://www.iab.org/wp-content/IAB-uploads/2016/03/UDI-Position-Paper-OO-Approach-to-IoT-Interoperability.pdf
-    title: Object Oriented Approach to IoT Interoperability
-    author:
-    - ins: M. Kohanim
-      name: M. Kohanim
-      org: ''
-    date: 2016
-    seriesinfo:
-      Proceedings: of the IoT Workshop for Semantic Interoperability (IOTSI)
   nRF-Sniffer:
     title: nRF Sniffer - Smart/Bluetooth low energy packet sniffer
     author:
@@ -138,9 +128,9 @@ informative:
 
 This document provides a summary of the 'Workshop on Internet of
 Things (IoT) Semantic Interoperability (IOTSI)',
-which took place in Santa Clara, CA, on March 17-18, 2016.  The main
+which took place in Santa Clara, California, on March 17-18, 2016.  The main
 goal of the workshop was to foster a discussion on the different
-approaches used by companies and standards developing organizations (SDOs)
+approaches used by companies and Standards Developing Organizations (SDOs)
 to accomplish interoperability at the application layer.  This report
 summarizes the discussions, and lists recommendations to the standards
 community.  The views and positions in this report are those of the
@@ -165,7 +155,7 @@ complementary to the ongoing engineering efforts performed by working
 groups of the IETF.
 
 With the expansion of the Internet of Things (IoT), interoperability
-becomes more and more important. Standards developing organizations (SDOs)
+becomes more and more important. Standards Developing Organizations (SDOs)
 have done a tremendous amount of work to standardize new protocols,
 and to profile existing protocols.
 
@@ -178,14 +168,14 @@ SDOs.
 One common problem is the lack of an encoding-independent standardization
 of the information, the so-called information model. Another problem is
 the strong relationship with the underlying communication architecture,
-such as an Remote Procedure Call (RPC) or a RESTful design. Furthermore, groups develop
+such as a Remote Procedure Call (RPC) style design or a RESTful design. Furthermore, groups develop
 solutions that are very similar on the surface but differ slightly in their standardized outcome, leading to interoperability
 problems. Finally, some groups favor different encodings for use with
 various application layer protocols.
 
 Thus, the IAB decided to organize a workshop to reach out to relevant
 stakeholders to explore the state-of-the-art and to identify
-commonality and gaps {{IOTSIAG}}, {{IOTSIWS}}. In particular, the IAB was
+commonality and gaps {{IOTSIAG}}{{IOTSIWS}}. In particular, the IAB was
 interested to learn about the following aspects:
 
 * What is the state of the art in data and information models? What should
@@ -224,9 +214,9 @@ resources of an endpoint, or "interaction model".  Therefore the three
 
 {: hangIndent='3'}
 Information Model
-: An information model defines an environment at the highest level of abstraction, they
-  express the desired functionality.
-  They can be defined informally (e.g., in plain English) or more
+: An information model defines an environment at the highest level of abstraction and
+  expresses the desired functionality.
+  Information models can be defined informally (e.g., in plain English) or more
   formally (e.g., UML, Entity-Relationship Diagrams, etc.).
   Implementation details are hidden.
 {: vspace='0'}
@@ -237,7 +227,7 @@ Data Model
   abstraction, including implementation and protocol-specific details.
   Some examples are: SNMP Management Information
   Base (MIB) modules, W3C Thing Description (TD) Things, YANG models, LWM2M
-  Schemas, OCF Schemas and so on.
+  Schemas, OCF Schemas, and so on.
 {: vspace='0'}
 
 {: hangIndent='3'}
@@ -284,7 +274,7 @@ and RAML to define interaction models.  The standard files are available online
 at OneIoTa.org.
 
 The AllSeen Alliance uses AllJoyn Introspection XML to define data and interaction
-models in the same formal language, tailored for RPC-style interation.  The standard
+models in the same formal language, tailored for RPC-style interaction.  The standard
 files are available online on the AllSeen Alliance web site, but both standard and
 vendor-defined model files can be obtained by directly querying a device for them at runtime.
 
@@ -297,8 +287,8 @@ Other SDOs may use various other formats.
 * Formal Languages for Code Generation
 
 Code generation tools that use formal data and information modelling languages
-are needed by developers. For example, the Allseen Visual Studio
-Plugin {{Allseen-Plugin}} offers a wizard to generate code based on
+are needed by developers. For example, the AllSeen Visual Studio
+Plugin {{AllSeen-Plugin}} offers a wizard to generate code based on
 the formal description of the data model.  Another example of a data
 modelling language that can be used for code generation is YANG.  A
 popular tool to help with code generation of YANG modules is pyang {{PYANG}}.
@@ -322,25 +312,25 @@ from the device at runtime.
 
 The working assumption is that devices need to have a common data model 
 with a priori knowledge of data types and actions. However that would imply 
-that each consortia/organization will try to define their own, causing a major 
+that each consortium/organization will try to define their own, causing a major 
 interoperability problem, if not a completely intractable one  given
-the ammount of variations, extensions, compositions or versioning changes that
+the amount of variations, extensions, compositions or versioning changes that
 will happen on a per data model basis. 
 
 Another potential approach is to have a minimal ammount of information on the
-device to allow for a runtime binding to a specific model. The objective being
-to require as little a prior knowledge as possible. 
+device to allow for a runtime binding to a specific model, the objective being
+to require as little prior knowledge as possible. 
 
 Moreover, gateways, bridges  and other similar devices need to dynamically
 translate (or map) one data model to another one. Complexity will increase 
-as there are also multiple protocols and schemas that will make interoperability
+as there are also multiple protocols and schemas that make interoperability
 harder to achieve. 
 
 
 * Runtime Discovery
 
 Runtime discovery allows IoT devices to exchange metadata about the data, potentially along with the
-data exchanged itself. In some cases the metadata not only describe data but also the interaction model as well. 
+data exchanged itself. In some cases the metadata not only describes data but also the interaction model as well. 
 An example of such an approach has been shown with HATEOAS {{HATEOAS}}.
 Another example is that all AllJoyn devices support such runtime discovery
 using a protocol mechanism called "introspection", where the metadata is 
@@ -349,9 +339,9 @@ queried from the device itself {{AllSeen}}.
 There are various models, whether deployed or possible, for such discovery.
 The metadata might be extracted from a specification, or looked up on a 
 cloud repository (e.g., OneIoTa for OCF models), or looked up via a vendor's
-site, or obtained from the device itself as (such as in the AllJoyn case).  The 
+site, or obtained from the device itself (such as in the AllJoyn case).  The 
 relevant metadata might be obtained from the same place, or different
-pieces might be obtained from different places, such as obtaining separately
+pieces might be obtained from different places, such as separately obtaining
 information such as (a) syntax information, (b) end-user descriptions in 
 a desired language, and (c) developer-specific comments for implementers.
 
@@ -362,7 +352,7 @@ single data model standard, there is no need for gateways that translate from on
 to the other one. However, this is far from reality today, and there are many
 proprietary data models in addition to the already standardized ones. As a 
 consequence, gateways are needed to translate between data models. This leads to 
-n^2-n combinations, in the worse case. 
+(n^2)-n combinations, in the worst case. 
 
 There are analogies with gateways back in the 1980s that were used to
 translate between network layer protocols.  Eventually IP took over, providing
@@ -372,10 +362,10 @@ due to the translation between data models. The functionality of IP was so
 valuable in the market that advanced features of other networking 
 protocols became less attractive and were not used anymore. 
 
-Participants discussed an alternative, called 'red star' shown in {{red-star}}, 
-where data models are translated to the data model shown in the middle. This 
+Participants discussed an alternative which they called a 'red star', shown in {{red-star}}, 
+where data models are translated to a common data model shown in the middle. This 
 reduces the number of translations that are needed down to 2n (in the best case). 
-Of course, everyone wants to be the red star data model. 
+The problem, of course, is that everyone wants their own data model to be the red star in the center.
 
 ~~~~
    +-----+                                        +-----+
@@ -387,52 +377,53 @@ Of course, everyone wants to be the red star data model.
                     --                --
                       --            --
                         --        --
-     ---                  --    --                  ---
-    /   \                   /o\                    /   \
-   |     | ----------------/ooo\----------------  |     |
-    \   /                  \ooo/                   \   /
-     ---                  //\o/ --                  ---   
-                        //        --
-                      //            --
-                    //                ---
-                  //                     --
-                //                         --
-      /\      //                             --      /\
-     / \    //                                 --   / \
-    /   \  /                                       /   \
-    /   \                                          /   \
-   /------                                        /------
+     ---                  -- A  --                  ---
+    /   \                ___/ \___                 /   \
+   |     | ---------------',   .'---------------  |     |
+    \   /                 /. ^ .\                  \   /
+     ---                 /'     '\                  ---   
+                        --        --
+                      --            --
+                    --                --
+                  --                    --
+                --                        --
+       /\     --                            --     /\
+      /  \  --                                --  /  \
+     /    \                                      /    \
+    /      \                                    /      \
+   /--------\                                  /--------\
 ~~~~
 {: #red-star title="The 'Red Star' in Data/Information Models."}
 
 While the workshop itself was not a suitable forum to discuss the design of 
-such translation model several questions were raised: 
+such translation in detail, several questions were raised: 
 
- * Do we need a red star that does everything or could we design something that 
+ * Do we need a "red star" that does everything or could we design something that 
 offers a more restricted functionality? 
 
  * How do we handle loss of data and loss of functionality? 
 
  * Should data be translated between data models or data models be translated? 
 
- * How can interaction models be translated? It needs to be dealt with in addition 
- to the data model. 
+ * How can interaction models be translated? They need to be dealt with in addition 
+ to the data models. 
 
  * Many (if not all) data and interaction models have some bizarre functionality 
  that cannot be translated easily. How can those be handled? 
 
  * What limitations are we going to accept in these translations? 
 
- * When should translation happen? 
+The participants also addressed the question of when translation should be done.
+Two use cases were discussed:
 
 a)  Design time: a translation between data model
 descriptions, such as translating a YANG model to a RAML/JSON model,
-can be performed once, such as during design time.
-A single information model can be mapped to a number of different data models.
+can be performed once, during design time.
+A single information model might be mapped to a number of different data models.
 
 b)  Run time: Runtime translation of values in two standard data models can only be
 algorithmically done when the data model on one side is algorithmically derived
-from the data model on the other side.  This is called a "derived model".
+from the data model on the other side.  This was called a "derived model".
 It was discussed that the availability of runtime discovery can aid in
 semantic translation, such as when a vendor-specific data model on one
 side of a protocol bridge is resolved and the translator can algorithmically 
@@ -442,18 +433,18 @@ side of a protocol bridge, as discussed in {{BridgeTaxonomy}}.
 The participants agreed that algorithm translation will generally require
 custom code, whenever one is translating to anything other than a derived model.
 
-Participants were under the impression that it is easier to translate data between systems that
+Participants concluded that it is typically easier to translate data between systems that
 follow the same communication architecture.
 
 # Dealing with change {#section-6}
 
 A large part of the workshop was dedicated to the evolution of
-devices and server side applications.
+devices and server-side applications.
 Interactions between devices and services and how their relationship
 evolves over time is complicated by their respective different 
 interaction models.
 
-The workshop discussed various approaches to deal with change.  In the most basic case, a
+The workshop participants discussed various approaches to deal with change.  In the most basic case, a
 developer might use a description of an API and implement 
 the protocol steps.  Sometimes the data or information model can be used to generate code stubs.  Subsequent changes to an API
 require changes on the clients to upgrade to the new version, which
@@ -593,7 +584,7 @@ Tschofenig.
 * Alissa Cooper, Cisco
 * Robert Cragie, ARM Limited
 * Laura Daniele, TNO
-* Bryant Eastham, OpenDof
+* Bryant Eastham, OpenDOF
 * Christian Groves, Huawei
 * Ted Hardie, Google
 * Yonggeun Hong, ETRI
@@ -621,9 +612,9 @@ Tschofenig.
 * Clarke Stevens
 * Ram Subramanian, Intel
 * Andrew Sullivan, DIN
-* Darshak Thakore, Cablelabs
+* Darshak Thakore, CableLabs
 * Dave Thaler, Microsoft
 * Hannes Tschofenig, ARM Limited
-* Michael Verschoor, Philips Lightning
+* Michael Verschoor, Philips Lighting
 
 --- back

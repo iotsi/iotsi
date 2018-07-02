@@ -10,4 +10,4 @@
 ```
 
 
-This is the reporitory for the IOTSI and WISHI workshops.
+This is the repository for the IOTSI and WISHI workshops.
